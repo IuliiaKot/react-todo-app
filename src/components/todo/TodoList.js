@@ -9,10 +9,15 @@ export const TodoList = (props) => {
           props.todos.map(item => {
             return <TodoItem key={item.id}
             name={item.name}
+            id={item.id}
             isComplete={item.isComplete}/>
           })
         }
       </ul>
     </div>
   )
+};
+
+TodoList.propsTypes = {
+  todos: React.PropTypes.array.isRequired
 }
