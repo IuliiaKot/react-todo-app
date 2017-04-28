@@ -10,7 +10,8 @@ export const TodoList = (props) => {
             return <TodoItem key={item.id}
             name={item.name}
             id={item.id}
-            isComplete={item.isComplete}/>
+            isComplete={item.isComplete}
+            handleToggle={props.handleToggle}/>
           })
         }
       </ul>
