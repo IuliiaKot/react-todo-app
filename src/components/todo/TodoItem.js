@@ -6,7 +6,7 @@ export const TodoItem = (props) =>{
    return (
     <li><input id={props.id}
       type="checkbox"
-      defaultChecked={props.isComplete}
+      checked={props.isComplete}
       onChange={handleToggle}
       />{props.name}</li>
   )

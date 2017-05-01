@@ -4,7 +4,7 @@ import './App.css';
 import {TodoForm, TodoList} from './components/todo'
 import {addTodo} from './lib/todoHelpers';
 import {generateId, findById, toggleTodo, updateTodo} from './lib/todoHelpers';
-
+import {pipe, partial} from './lib/utils'
 
 class App extends Component {
   state = {
@@ -18,11 +18,14 @@ class App extends Component {
   };
 
   handleToggle = (id) => {
-    const todo = findById(id, this.state.todos)
-    const toggled = toggleTodo(todo)
-    const updatedTodos = updateTodo(this.state.todos, toggled)
+    const getUpdatesTodos = pipe(findById, toggleTodo,
+    partial(updateTodo, this.state.todos))
+    // const todo = findById(id, this.state.todos)
+    // const toggled = toggleTodo(todo)
+    const updatedTodos = getUpdatesTodos(id, this.state.todos)
     this.setState({todos: updatedTodos})
   }
+
 
   handleSubmit = (evnt) => {
     evnt.preventDefault();
@@ -64,7 +67,8 @@ class App extends Component {
           <TodoForm change={this.handleInputChange}
           currentTodo={this.state.currentTodo}
           handleSubmit={submitHandler}/>
-          <TodoList handleToggle={this.handleToggle} todos={this.state.todos} />
+          <TodoList handleToggle={this.handleToggle} 
+          todos={this.state.todos} />
         </div>
       </div>
     );
