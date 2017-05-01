@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import {TodoForm, TodoList} from './components/todo'
 import {addTodo} from './lib/todoHelpers';
-import {generateId, findById, toggleTodo, updateTodo} from './lib/todoHelpers';
+import {generateId, findById, toggleTodo, updateTodo, removeTodo} from './lib/todoHelpers';
 import {pipe, partial} from './lib/utils'
 
 class App extends Component {
@@ -16,6 +16,12 @@ class App extends Component {
     ],
     currentTodo: ''
   };
+
+  handleRemove = (id, evt) => {
+    evt.preventDefault();
+    const updatedTodos = removeTodo(this.state.todos, id)
+    this.setState({todos: updatedTodos});
+  }
 
   handleToggle = (id) => {
     const getUpdatesTodos = pipe(findById, toggleTodo,
@@ -68,6 +74,7 @@ class App extends Component {
           currentTodo={this.state.currentTodo}
           handleSubmit={submitHandler}/>
           <TodoList handleToggle={this.handleToggle} 
+          handleRemove={this.handleRemove}
           todos={this.state.todos} />
         </div>
       </div>
