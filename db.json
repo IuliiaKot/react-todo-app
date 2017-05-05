@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Setup Server",
-      "isComplete": true
+      "isComplete": false
     },
     {
       "id": 2,
@@ -18,32 +18,7 @@
     {
       "id": 4,
       "name": "Setup fetch",
-      "isComplete": true
-    },
-    {
-      "id": 6572,
-      "name": "hello",
-      "isComplete": true
-    },
-    {
-      "id": 6982,
-      "name": "sdfsdf",
-      "isComplete": true
-    },
-    {
-      "id": 7903,
-      "name": "adjahkjfahsk",
-      "isComplete": true
-    },
-    {
-      "id": 6065,
-      "name": "hello",
-      "isComplete": true
-    },
-    {
-      "id": 3004,
-      "name": "1",
-      "isComplete": true
+      "isComplete": false
     }
   ]
 }
